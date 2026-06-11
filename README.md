@@ -1,8 +1,16 @@
 # 🛸 DAD - Direct Aerial Delivery
 
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](#)
+[![Python](https://img.shields.io/badge/Python-3.10-blue)](#)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100-teal)](#)
+[![PX4 Autopilot](https://img.shields.io/badge/PX4-v1.14-orange)](#)
+[![React Native](https://img.shields.io/badge/React%20Native-0.72-blue)](#)
+[![Licence](https://img.shields.io/badge/Licence-MIT-green)](#)
+
 ![DAD Hero Banner](assets/hero_banner.png)
 
-**Direct Aerial Delivery (DAD)** is an advanced, enterprise-grade autonomous drone logistics platform designed for smart city delivery systems and medical/rapid-response payload transport. The system combines modern drone hardware firmware, computer vision AI networks, cloud telemetry backend servers, and a premium control dashboard to enable safe, scalable, and fully autonomous flight operations.
+## 📖 Project Brief
+**Direct Aerial Delivery (DAD)** is a final year undergraduate engineering design project and research platform focusing on autonomous drone-based logistics and last-mile aerial delivery systems. Under the academic supervision of the Department of Electronics and Telecommunication Engineering, Solapur University, this project implements a complete, integrated system-level R&D prototype that bridges drone firmware logic, local sensor fusion, companion computer routing, cloud telemetry ingestion, and client booking.
 
 ---
 
@@ -12,20 +20,20 @@ The DAD ecosystem consists of six main integrated components:
 
 ```mermaid
 graph TD
-    App[Customer App - Flutter/React Native] -->|Place Order / Track| Cloud[FastAPI Telemetry Backend]
-    Dashboard[Control Center Dashboard] -->|Monitor Fleet / Command| Cloud
+    App[Customer App - React Native] -->|Place Order / Track| Cloud[FastAPI Telemetry Backend]
+    Dashboard[Control Centre Dashboard] -->|Monitor Fleet / Command| Cloud
     Cloud -->|MAVLink telemetry & control| Drone[Autonomous Hexacopter Drone]
     Drone -->|Hardware Sensors & GPS| FC[PX4 Flight Controller]
     FC -->|Sensor Fusion & Flight Logic| Motor[Motors & Actuators]
-    Drone -->|Camera Feed| AI[Edge AI Navigation - YOLOv11]
-    AI -->|Obstacle Avoidance Vector| FC
+    Drone -->|Camera Feed & LiDAR| SF[Sensor Fusion Node]
+    SF -->|Avoidance Correction Vector| FC
 ```
 
 1. **Drone Firmware (`firmware/`)**: Real-time onboard flight algorithms built on top of PX4 and ArduPilot using MAVLink. Includes custom modules for active battery management, emergency power-hub landing, and lidar-based terrain verification.
-2. **AI Navigation (`ai/`)**: Computer Vision pipeline deploying **YOLOv11** for low-latency obstacle detection (birds, power lines, towers, trees) and a deep CNN for real-time weather classification.
+2. **Sensor Fusion & Autonomous Control (`sensor_fusion/` and `autonomous/`)**: Multi-sensor integration combining rangefinder readings with camera detections to calculate safe clearance ranges and handle meteorological failsafes.
 3. **Cloud Telemetry Backend (`backend/`)**: FastAPI-based microservice architecture managing real-time MQTT/Websocket telemetry streams, database schemas, dynamic mission generation, and order dispatching.
-4. **Control Center Dashboard (`dashboard/`)**: Premium dark-mode glassmorphic telemetry dashboard displaying real-time 3D flight trajectories, fleet battery state-of-health, weather alerts, and control overrides.
-5. **Customer Mobile Application (`mobile/`)**: React Native customer app with OTP authorization, package dimension scanning, live parcel tracking, and contactless drop-off verification.
+4. **Control Centre Dashboard (`dashboard/`)**: Premium dark-mode glassmorphic telemetry dashboard displaying real-time 3D flight trajectories, fleet battery state-of-health, weather alerts, and control overrides.
+5. **Customer Mobile Application (`mobile/`)**: React Native customer app with OTP authorisation, package dimension scanning, live parcel tracking, and contactless drop-off verification.
 6. **Simulation Environment (`simulations/`)**: Software In The Loop (SITL) Gazebo and AirSim simulation configs to test obstacle avoidance in heavy rain, high-wind, and urban canyon environments.
 
 ---
@@ -33,10 +41,46 @@ graph TD
 ## 🚀 Key Features
 
 *   **Autonomous BVLOS Navigation**: Beyond Visual Line of Sight flight planning using RTK-GPS and onboard route correction.
-*   **Sensor Fusion AI**: Camera + LiDAR + GPS + IMU data integration for 360° obstacle awareness.
-*   **Weather-Adaptive Flight Modes**: Intelligent rerouting or emergency landing procedures triggered by CNN weather detection.
+*   **Sensor Fusion Analysis**: Camera + LiDAR + GPS + IMU data integration for 360° obstacle awareness.
+*   **Weather-Adaptive Flight Modes**: Intelligent rerouting or emergency landing procedures triggered by sensor weather detection.
 *   **Failsafe Return-to-Home (RTH)**: Dynamic battery calculation that identifies the nearest available landing hub based on wind vectors and remaining power capacity.
-*   **Military-Grade Security**: Secure MAVLink telemetry streams with AES-256 encryption and JWT control channel handshakes.
+*   **Secure Telemetry Framework**: Secure MAVLink telemetry streams with signature signing and JWT control channel verification.
+
+---
+
+## 📊 Project Status
+
+**Current Phase: Architecture & Prototype Development**
+
+### Completed
+*   Repository Architecture & Folder Setup
+*   System Architecture Design
+*   Initial Documentation & Academic Research Papers
+
+### In Progress
+*   Sensor Fusion & Kalman Filter Modules
+*   FastAPI Backend Telemetry API
+*   PX4 Integration Control Bindings
+*   Simulation Scenarios in Gazebo
+
+### Planned
+*   Physical Hardware Tarot 680Pro Assembly
+*   Field Testing & Calibration In Solapur Region
+*   Control Centre Live WebSocket Integration
+*   Contactless Mobile Client Verification
+
+---
+
+## 🗺️ Project Roadmap
+
+*   **Phase 1 – Research & Architecture**: Complete literature survey, regulatory review, and system specification blocks.
+*   **Phase 2 – PX4 + Gazebo Simulation**: Connect PX4 SITL and configure the urban delivery environment simulation.
+*   **Phase 3 – Sensor Fusion Integration**: Deploy camera detection bounding box matching with LiDAR rangefinders.
+*   **Phase 4 – Backend & Telemetry**: Build FastAPI endpoints, telemetry schemas, and database loggers.
+*   **Phase 5 – Mobile Application**: Create React Native client screens and live location tracking cards.
+*   **Phase 6 – Hardware Prototype**: Assemble Tarot 680Pro carbon hexacopter frame with Pixhawk 6C.
+*   **Phase 7 – Field Validation**: Conduct line-of-sight flight operations to test sensor override loops.
+*   **Phase 8 – Production MVP**: Launch local test deliveries inside Solapur smart city.
 
 ---
 
@@ -44,19 +88,20 @@ graph TD
 
 ```
 DAD/
-├── README.md                # Project landing page
+├── README.md                # Project landing page (Indian English)
 ├── LICENSE                  # MIT License
 ├── CONTRIBUTING.md          # Open-source contributions guidelines
 ├── CHANGELOG.md             # Version control log
 ├── ROADMAP.md               # Milestones & features timeline
 ├── CITATION.cff             # Academic citing scheme
 │
-├── docs/                    # Architectural specs, API guides & user stories
-├── architecture/            # Mermaid specifications and visual flows
-├── research/                # Whitepapers on DGCA compliance, BVLOS, and LiDAR fusion
+├── docs/                    # Project overview & requirements spec
+├── architecture/            # System & Software diagrams (.png & .mermaid)
+├── research/                # Literature surveys and regulatory reviews (Indian English)
 │
 ├── firmware/                # PX4 C++ battery managers & MAVLink scripts
-├── ai/                      # YOLOv11 detectors & EfficientNet weather models
+├── sensor_fusion/           # LiDAR + Vision match nodes & Kalman filters
+├── autonomous/              # Obstacle avoidance vectors & weather monitor fail-safes
 ├── backend/                 # FastAPI server, WebSockets telemetry, database schemas
 ├── dashboard/               # Next.js/HTML control panel with mock canvas flight map
 ├── mobile/                  # React Native client app interface
@@ -66,6 +111,28 @@ DAD/
 ├── security/                # Threat models, JWT encryption & hijack prevention
 └── testing/                 # Integration tests & Python unit tests
 ```
+
+---
+
+## 📸 System Showcase & Visual Evidence
+
+### System Architecture
+![System Architecture](architecture/system_architecture.png)
+
+### Software Architecture
+![Software Architecture](architecture/software_architecture.png)
+
+### Deployment Architecture
+![Deployment Architecture](architecture/deployment_architecture.png)
+
+### Control Centre Dashboard Demo
+![Dashboard Demo](assets/dashboard_demo.png)
+
+### Drone CAD Render
+![Drone CAD Render](assets/drone_render.png)
+
+### Flight Simulation Screenshot
+![Simulation Screenshot](assets/simulation_screenshot.png)
 
 ---
 
@@ -89,45 +156,24 @@ python -m http.server 8080
 ```
 *View dashboard at: `http://localhost:8080`*
 
-### 3. AI Navigation Pipeline
+### 3. Sensor Fusion Tests
 ```bash
-cd ai/vision
-python obstacle_detector.py --input test_stream.mp4
+python -m unittest testing/test_suite.py
 ```
 
 ---
 
-## 📊 Technical R&D Highlight
+## 📜 Licence & Citation
 
-| Component | Technical Stack | Purpose / Action |
-| :--- | :--- | :--- |
-| **Drone Autopilot** | PX4 Autopilot, C++, PX4-SITL | Real-time flight control, actuator output |
-| **AI Detection** | YOLOv11, PyTorch, TensorRT | 30 FPS edge object detection (wires, birds) |
-| **Backend API** | FastAPI, SQLite, Pydantic | Fleet tracking database, geojson routing |
-| **Control UI** | HSL CSS, HTML5 Canvas, JS WebSockets | Real-time low-latency visualization |
-
----
-
-## 📸 System Showcase
-
-### Control Center Dashboard
-![Dashboard Screenshot](assets/dashboard_screenshot.png)
-
-### Drone CAD Render
-![Drone CAD Render](assets/drone_design.png)
-
----
-
-## 📜 License & Citation
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT Licence - see the [LICENSE](LICENSE) file for details.
 
 If you use this system for academic or industry research, please cite:
 ```bibtex
-@software{DAD_Drone_2026,
-  author = {Direct Aerial Delivery Systems},
-  title = {DAD: Autonomous Last-Mile Drone Delivery & Control Ecosystem},
+@thesis{DAD_Drone_2026,
+  author = {DAD Project Group},
+  title = {Direct Aerial Delivery: Autonomous Last-Mile Drone Delivery & Control Ecosystem},
+  school = {Solapur University, Department of Electronics and Telecommunication Engineering},
   year = {2026},
-  url = {https://github.com/438malludiswardhanreddy-sketch/DAD-Direct-Aerial-Delivery}
+  type = {Final Year B.E. Project Report}
 }
 ```

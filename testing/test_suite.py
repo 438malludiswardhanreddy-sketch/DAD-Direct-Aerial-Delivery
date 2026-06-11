@@ -1,33 +1,49 @@
 import sys
 import os
 import unittest
-import numpy as np
 
 # Ensure parent directory is in path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from ai.vision.obstacle_detector import YOLOv11ObstacleDetector
-from ai.weather.weather_classifier import WeatherClassifier
+from sensor_fusion.sensor_fusion_node import SensorFusionNode
+from sensor_fusion.kalman_filter import RangeKalmanFilter
+from autonomous.obstacle_avoidance import ObstacleAvoidanceController
+from autonomous.weather_monitor import WeatherMonitor
 from backend.database import DatabaseManager
 
 class TestDADSystem(unittest.TestCase):
-    def test_obstacle_detector_mock(self):
-        detector = YOLOv11ObstacleDetector()
-        dummy_frame = np.zeros((480, 640, 3), dtype=np.uint8)
-        results = detector.process_frame(dummy_frame)
-        
-        self.assertTrue(len(results) > 0)
-        self.assertEqual(results[0]["class"], "wire")
-        self.assertGreater(results[0]["confidence"], 0.5)
+    def test_kalman_filter(self):
+        kf = RangeKalmanFilter()
+        # Feed readings converging on 5.0m
+        readings = [5.2, 4.8, 5.1, 4.9, 5.0]
+        filtered = 0.0
+        for r in readings:
+            filtered = kf.filter(r)
+        self.assertAlmostEqual(filtered, 5.0, places=1)
 
-    def test_weather_classifier(self):
-        classifier = WeatherClassifier()
-        dummy_frame = np.zeros((224, 224, 3), dtype=np.uint8)
-        result = classifier.classify(dummy_frame)
-        
-        self.assertIn("condition", result)
-        self.assertIn("confidence", result)
-        self.assertIn(result["condition"], classifier.labels)
+    def test_sensor_fusion(self):
+        node = SensorFusionNode()
+        # Mock visual box and range
+        mock_box = [280, 200, 80, 80]
+        res = node.fuse_data(mock_box, 8.2)
+        self.assertIn("distance_m", res)
+        self.assertTrue(res["threat_detected"])
+
+    def test_obstacle_avoidance(self):
+        controller = ObstacleAvoidanceController(safe_clearance_metres=5.0)
+        threat = {
+            "distance_m": 4.0,
+            "azimuth_deg": 10.0,
+            "threat_detected": True
+        }
+        offset = controller.calculate_avoidance_yaw(threat)
+        self.assertLess(offset, 0.0) # Steering away from positive azimuth angle
+
+    def test_weather_monitor(self):
+        monitor = WeatherMonitor()
+        res = monitor.evaluate_flight_safety(current_rain_pct=90.0, current_wind_mps=5.0)
+        self.assertFalse(res["flight_authorized"])
+        self.assertEqual(res["recommended_action"], "LAND_AT_NEAREST_HUB")
 
     def test_database_init(self):
         db_path = "test_dad_logistics.db"
@@ -45,3 +61,4 @@ class TestDADSystem(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

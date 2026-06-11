@@ -1,34 +1,33 @@
-# Obstacle Avoidance using LiDAR and YOLO Fusion
+# Obstacle Avoidance via Camera and LiDAR Fusion
 
-## 1. Abstract
-Autonomous BVLOS drone delivery requires robust obstacle detection and tracking. Traditional methods rely solely on either active sensors (LiDAR) or passive sensors (cameras). However, LiDAR lacks semantic understanding (e.g., distinguishing a bird from a branch), while camera detection is vulnerable to poor lighting. This paper details our sensor-fusion approach combining 1D/3D LiDAR distance maps and YOLOv11 deep learning object classification.
+## 1. Introduction
+This research paper outlines our local path planning method for autonomous drones. In final year engineering laboratories, constructing high-cost 3D LiDAR arrays is often not feasible. We propose a cost-effective sensor fusion design integrating a 1D/2D LiDAR rangefinder (e.g. Benewake TFmini) with a standard camera stream. The camera classifies obstacle types, while the LiDAR provides accurate range values.
 
-## 2. Sensor Integration Strategy
-The DAD system uses:
-*   **Primary Sensor**: 120° Wide-Angle Front Camera.
-*   **Secondary Sensor**: Benewake TFmini LiDAR (pointing forward alongside the camera).
-*   **Sensor Fusion Model**: Early-fusion overlay. The distance measured by LiDAR is matched with the center coordinates of YOLO bounding boxes.
+## 2. Methodology
+Our implementation coordinates:
+*   **Sensor Inputs**: Wide-angle video frames and serial LiDAR distance scans.
+*   **Filtre Algorithm**: A Kalman filter resolves range measurement noise and outliers.
+*   **Bounding Box Projection**: The camera frames are processed to locate obstacle edges (wires, towers, birds). The LiDAR beam width is aligned with the frame center coordinates.
 
 ```
        [Camera Feed]             [LiDAR Range]
              │                         │
              ▼                         ▼
-      [YOLOv11 Inference]     [Kalman Filter Scan]
+      [Object Detection]       [Kalman Range Filter]
              │                         │
              └───────────┬─────────────┘
                          ▼
                 [Semantic Fusion]
                          │
                          ▼
-           [Dynamic Threat Vector Map]
+          [Dynamic Trajectory Controller]
                          │
                          ▼
-            [Flight Controller Override]
+            [Flight Autopilot Override]
 ```
 
-## 3. Decision Logic
-1.  **Object Detection**: YOLOv11 categorizes objects (e.g., `wire`, `bird`, `pole`).
-2.  **Severity Matrix**:
-    *   If a `wire` is detected at >10 meters: The flight controller executes a slow pitch change to gain 3 meters of altitude.
-    *   If a `bird` is detected at <5 meters: The autopilot executes a lateral bank to avoid collision.
-    *   If any obstacle distance drops below 2 meters: The autopilot activates emergency loiter mode.
+## 3. Threat Assessment Criteria
+The companion computer processes the fused state and prioritises corrective flight modes:
+1.  **Low Threat (>10m)**: Standard cruise path is maintained.
+2.  **Medium Threat (5m - 10m)**: The navigation controller recalculates a yaw offset vector to steer around the coordinate box.
+3.  **High Threat (<2m)**: Failsafe override engages immediately. The autopilot switches to hover mode and triggers a Return-to-Home trajectory.
