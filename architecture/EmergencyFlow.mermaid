@@ -1,0 +1,20 @@
+stateDiagram-v2
+    [*] --> Standby
+    Standby --> Takeoff : CommandReceived
+    Takeoff --> Cruise : TargetAltitudeReached
+
+    Cruise --> ObstacleAvoidance : ObstacleDetected
+    ObstacleAvoidance --> Cruise : WaypointClear
+
+    Cruise --> WeatherEmergency : RainSensorTriggered
+    Cruise --> LowBatteryFailsafe : BatteryUnder20Percent
+
+    WeatherEmergency --> LocateNearestHub
+    LowBatteryFailsafe --> LocateNearestHub
+
+    LocateNearestHub --> DescentToHub : LandingSpotLocked
+    LocateNearestHub --> LandImmediately : SearchTimeout
+
+    DescentToHub --> SafeLanded
+    LandImmediately --> SafeLanded
+    SafeLanded --> [*]

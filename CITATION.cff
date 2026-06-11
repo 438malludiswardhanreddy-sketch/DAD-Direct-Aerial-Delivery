@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as below."
+authors:
+  - family-names: "Direct Aerial Delivery Systems"
+    given-names: "Core Engineering Team"
+title: "DAD: Autonomous Last-Mile Drone Delivery & Control Ecosystem"
+version: 1.0.0
+date-released: 2026-06-12
+url: "https://github.com/438malludiswardhanreddy-sketch/DAD-Direct-Aerial-Delivery"
+repository-code: "https://github.com/438malludiswardhanreddy-sketch/DAD-Direct-Aerial-Delivery"
+keywords:
+  - drone delivery
+  - robotics
+  - computer vision
+  - PX4
+  - FastAPI
+  - aerospace engineering

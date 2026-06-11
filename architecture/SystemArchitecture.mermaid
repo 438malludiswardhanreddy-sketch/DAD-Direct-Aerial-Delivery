@@ -1,0 +1,30 @@
+graph TD
+    subgraph Client
+        MobileApp[Flutter / React Native Customer App]
+        WebDashboard[Control Center Dashboard]
+    end
+
+    subgraph Cloud Backend
+        FastAPI[FastAPI Telemetry Gateway]
+        DB[(SQLite / PostgreSQL database)]
+        WebSockets[WebSocket Telemetry Hub]
+    end
+
+    subgraph Drone System
+        Companion[Raspberry Pi 5 / NVIDIA Jetson]
+        YOLO[YOLOv11 Edge AI]
+        FC[PX4 Flight Autopilot]
+        MAVLink[MAVLink Serial Link]
+    end
+
+    MobileApp -->|POST /orders| FastAPI
+    WebDashboard -->|GET /fleet/health| FastAPI
+    FastAPI <-->|Read / Write| DB
+    WebSockets -->|Live Telemetry Broadcast| WebDashboard
+    FastAPI <-->|WebSocket Status Streams| WebSockets
+
+    Companion <-->|MAVLink Protocol| FC
+    FC -->|Sensor Data| Companion
+    Companion -->|Camera Frames| YOLO
+    YOLO -->|Avoidance Vectors| FC
+    Companion -->|POST /telemetry/report| FastAPI

@@ -1,0 +1,13 @@
+graph LR
+    Camera[IMX219 Camera] -->|Frames| Preprocessing[Frame Resize & Norm]
+    LiDAR[TFmini LiDAR] -->|Serial Distance| KalmanFilter[Kalman Range Filter]
+    IMU[IMU / Gyro] -->|Attitude Data| SensorFusion[Sensor Fusion Node]
+
+    Preprocessing -->|Tensors| YOLO[YOLOv11 Inference]
+    YOLO -->|Bounding Boxes| SemanticMapping[Semantic Target Matcher]
+    KalmanFilter -->|Filtered Distances| SemanticMapping
+    IMU --> SensorFusion
+
+    SemanticMapping -->|Matched Obstacles| ThreatCalculation[Threat Severity Calculator]
+    ThreatCalculation -->|Steering Correction Vector| PathPlanner[Local Path Planner]
+    PathPlanner -->|Avoidance Commands| FlightController[Autopilot Core]

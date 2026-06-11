@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAD - Direct Aerial Delivery Control Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+  <div class="glass-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-logo">
+        <span class="pulse-dot"></span>
+        <h1>DAD CONTROL CENTER</h1>
+      </div>
+      <div class="system-status">
+        <span class="status-badge active">FLEET ONLINE</span>
+        <span class="time-widget" id="clock">00:00:00 UTC</span>
+      </div>
+    </header>
+
+    <!-- Main Layout Grid -->
+    <main class="dashboard-grid">
+      
+      <!-- Left Panel: Fleet Health & Active Orders -->
+      <section class="panel left-panel">
+        <div class="panel-header">
+          <h2>Fleet Telemetry</h2>
+        </div>
+        
+        <div class="fleet-list">
+          <div class="fleet-card active" id="card-drone-01">
+            <div class="fleet-card-header">
+              <span class="drone-id">DRONE-01</span>
+              <span class="drone-status-tag status-active">ACTIVE</span>
+            </div>
+            <div class="telemetry-grid">
+              <div class="telemetry-item">
+                <span class="label">BATTERY</span>
+                <span class="value" id="d1-battery">98.5%</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">ALTITUDE</span>
+                <span class="value" id="d1-alt">45.0m</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">SPEED</span>
+                <span class="value" id="d1-speed">12.5m/s</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">SIGNAL</span>
+                <span class="value">94%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fleet-card" id="card-drone-02">
+            <div class="fleet-card-header">
+              <span class="drone-id">DRONE-02</span>
+              <span class="drone-status-tag status-charging">CHARGING</span>
+            </div>
+            <div class="telemetry-grid">
+              <div class="telemetry-item">
+                <span class="label">BATTERY</span>
+                <span class="value">12.0%</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">CURRENT</span>
+                <span class="value">15.4A</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">TEMP</span>
+                <span class="value">34.2°C</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">TIME LEFT</span>
+                <span class="value">42 min</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fleet-card" id="card-drone-03">
+            <div class="fleet-card-header">
+              <span class="drone-id">DRONE-03</span>
+              <span class="drone-status-tag status-maintenance">MAINTENANCE</span>
+            </div>
+            <div class="telemetry-grid">
+              <div class="telemetry-item">
+                <span class="label">BATTERY</span>
+                <span class="value">95.0%</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">CODE</span>
+                <span class="value">SYS_OK</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">SENSORS</span>
+                <span class="value">CALIB</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="label">CYCLES</span>
+                <span class="value">142</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-header" style="margin-top: 20px;">
+          <h2>Weather Watch</h2>
+        </div>
+        <div class="weather-widget">
+          <div class="weather-info">
+            <span class="weather-temp">29°C</span>
+            <span class="weather-desc">Clear Sky (Safe to fly)</span>
+          </div>
+          <div class="weather-details">
+            <div>Wind: <strong>4.2 m/s NW</strong></div>
+            <div>Humidity: <strong>45%</strong></div>
+            <div>Alerts: <strong class="alert-none">NONE</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Center Map Area -->
+      <section class="panel map-panel">
+        <div class="panel-header">
+          <h2>Active Flight Path Map</h2>
+          <div class="map-controls">
+            <button class="btn btn-primary" id="btn-abort">ABORT MISSION</button>
+            <button class="btn btn-secondary" id="btn-simulate">TRIGGER RAIN FAILSASFE</button>
+          </div>
+        </div>
+        <div id="map"></div>
+      </section>
+
+      <!-- Right Panel: Telemetry Graphs & Mission Log -->
+      <section class="panel right-panel">
+        <div class="panel-header">
+          <h2>Mission Logs</h2>
+        </div>
+        <div class="terminal-log" id="terminal">
+          <div class="log-entry">[SYSTEM] Initializing Mission Control Center...</div>
+          <div class="log-entry">[SYSTEM] Telemetry WebSocket channel opened.</div>
+          <div class="log-entry">[DRONE-01] Preflight check passed. Takeoff authorized.</div>
+          <div class="log-entry">[DRONE-01] Cruising at altitude: 45m. Heading: 90°.</div>
+        </div>
+
+        <div class="panel-header" style="margin-top: 20px;">
+          <h2>Altitude Profile (Real-Time)</h2>
+        </div>
+        <div class="chart-container">
+          <canvas id="telemetryChart"></canvas>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Leaflet Map Script -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""></script>
+  <!-- Main Logic -->
+  <script>
+    // Clock widget
+    setInterval(() => {
+      document.getElementById('clock').innerText = new Date().toISOString().slice(11, 19) + ' UTC';
+    }, 1000);
+
+    // Initialize Map centered in Solapur region (historical reference coordinates)
+    const map = L.map('map', { zoomControl: false }).setView([17.6590, 75.9059], 14);
+    
+    // Add premium Dark Mode map tiles
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 20
+    }).addTo(map);
+
+    // Add landing hub and drone markers
+    const hubIcon = L.divIcon({ className: 'hub-marker', html: '⌂', iconSize: [24, 24] });
+    const droneIcon = L.divIcon({ className: 'drone-marker', html: '🛸', iconSize: [24, 24] });
+
+    const startHub = L.marker([17.6590, 75.9059], { icon: hubIcon }).addTo(map).bindPopup('Launch Station A');
+    const destHub = L.marker([17.6721, 75.9125], { icon: hubIcon }).addTo(map).bindPopup('Landing Hub B');
+    const droneMarker = L.marker([17.6590, 75.9059], { icon: droneIcon }).addTo(map);
+
+    // Add path polyline
+    const flightPath = L.polyline([[17.6590, 75.9059], [17.6721, 75.9125]], { color: '#00e5ff', weight: 3, dashArray: '5, 10' }).addTo(map);
+
+    // Dynamic Terminal Logs
+    const logTerminal = (msg, tag = 'INFO') => {
+      const term = document.getElementById('terminal');
+      const timeStr = new Date().toISOString().slice(11, 19);
+      const entry = document.createElement('div');
+      entry.className = 'log-entry';
+      entry.innerHTML = `<span class="log-time">[${timeStr}]</span> <span class="log-tag tag-${tag.toLowerCase()}">[${tag}]</span> ${msg}`;
+      term.appendChild(entry);
+      term.scrollTop = term.scrollHeight;
+    };
+
+    // WebSocket Telemetry Client
+    const connectWS = () => {
+      const ws = new WebSocket('ws://localhost:8000/ws/fleet');
+      
+      ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.type === 'telemetry') {
+          const telemetry = data.drones.drone_01;
+          updateUI(telemetry.latitude, telemetry.longitude, telemetry.altitude, telemetry.speed, telemetry.battery);
+        }
+      };
+
+      ws.onerror = () => {
+        // Run simulated fallback telemetry if backend server isn't running yet
+        runLocalFallbackSimulation();
+      };
+    };
+
+    // Update UI telemetry items
+    let altHistory = Array(30).fill(0);
+    const updateUI = (lat, lon, alt, speed, battery) => {
+      droneMarker.setLatLng([lat, lon]);
+      document.getElementById('d1-battery').innerText = `${battery.toFixed(1)}%`;
+      document.getElementById('d1-alt').innerText = `${alt.toFixed(1)}m`;
+      document.getElementById('d1-speed').innerText = `${speed.toFixed(1)}m/s`;
+
+      // Update altitude chart
+      altHistory.push(alt);
+      altHistory.shift();
+      drawChart();
+    };
+
+    // Simulated local fallback loop
+    let step = 0;
+    const runLocalFallbackSimulation = () => {
+      logTerminal("FastAPI server offline. Running local client loop simulation...", "WARN");
+      
+      setInterval(() => {
+        const latStart = 17.6590, lonStart = 75.9059;
+        const latDest = 17.6721, lonDest = 75.9125;
+        const alpha = (step % 100) / 100;
+        
+        const lat = latStart + alpha * (latDest - latStart);
+        const lon = lonStart + alpha * (lonDest - lonStart);
+        const alt = alpha === 0 || alpha === 1 ? 0 : 45.0 + Math.sin(step * 0.1) * 2;
+        const speed = alpha === 0 || alpha === 1 ? 0 : 12.5;
+        const battery = Math.max(100 - (step % 100) * 0.8, 10);
+        
+        updateUI(lat, lon, alt, speed, battery);
+        
+        if (step % 20 === 0) {
+          logTerminal(`Drone-01 coordinate telemetry broadcast: (${lat.toFixed(4)}, ${lon.toFixed(4)})`, "DRONE");
+        }
+        
+        step++;
+      }, 1000);
+    };
+
+    // Draw telemetry altitude history canvas chart
+    const canvas = document.getElementById('telemetryChart');
+    const ctx = canvas.getContext('2d');
+
+    const drawChart = () => {
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      canvas.width = w;
+      canvas.height = h;
+
+      ctx.clearRect(0, 0, w, h);
+      
+      // Draw grid
+      ctx.strokeStyle = '#20222a';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 4; i++) {
+        const y = (h / 4) * i;
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+        ctx.stroke();
+      }
+
+      // Draw path
+      ctx.strokeStyle = '#00e5ff';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      for (let i = 0; i < altHistory.length; i++) {
+        const x = (w / (altHistory.length - 1)) * i;
+        const y = h - (altHistory[i] / 60.0) * h;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Draw fill gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, h);
+      gradient.addColorStop(0, '#00e5ff33');
+      gradient.addColorStop(1, '#00e5ff00');
+      ctx.fillStyle = gradient;
+      ctx.lineTo(w, h);
+      ctx.lineTo(0, h);
+      ctx.fill();
+    };
+
+    // Abort and simulation buttons
+    document.getElementById('btn-abort').addEventListener('click', () => {
+      logTerminal("MISSION ABORT SIGNAL SENT. Return-To-Home sequence engaged.", "HALT");
+      alert("Abort signal transmitted. Autopilot mode set to Return-to-Launch (RTL).");
+    });
+
+    document.getElementById('btn-simulate').addEventListener('click', () => {
+      logTerminal("Rain Sensor status: 94% precipitation. Changing failsafe states...", "WARN");
+      logTerminal("Emergency flight control engaged. Seeking nearest landing platform...", "HALT");
+      alert("Precipitation limit exceeded. Emergency landing trigger sent.");
+    });
+
+    // Startup
+    connectWS();
+  </script>
+</body>
+</html>

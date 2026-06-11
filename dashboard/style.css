@@ -1,0 +1,382 @@
+/* DAD Dashboard Style System - Glassmorphism UI */
+:root {
+  --bg-color: #050608;
+  --panel-bg: rgba(18, 20, 26, 0.65);
+  --border-color: rgba(255, 255, 255, 0.08);
+  
+  /* Color Palette HSL */
+  --primary: hsl(190, 100%, 50%);       /* Neon Cyan */
+  --primary-hover: hsl(190, 100%, 40%);
+  --success: hsl(140, 100%, 50%);       /* Safe green */
+  --warning: hsl(40, 100%, 50%);        /* Failsafe warning yellow */
+  --danger: hsl(10, 100%, 50%);         /* Abort red */
+  
+  --text-main: #f0f2f5;
+  --text-muted: #8c96a5;
+  --font-family: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-family);
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(190, 100%, 50%, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, hsla(140, 100%, 50%, 0.03) 0px, transparent 50%);
+}
+
+.glass-container {
+  width: 98vw;
+  height: 96vh;
+  background: rgba(10, 11, 15, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  padding: 15px;
+}
+
+/* Header styling */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--primary);
+  text-shadow: 0 0 10px hsla(190, 100%, 50%, 0.3);
+}
+
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 hsla(190, 100%, 50%, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px hsla(190, 100%, 50%, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 hsla(190, 100%, 50%, 0); }
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 1px solid transparent;
+}
+
+.status-badge.active {
+  background: hsla(140, 100%, 50%, 0.1);
+  color: var(--success);
+  border-color: hsla(140, 100%, 50%, 0.2);
+}
+
+.time-widget {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Dashboard Main Grid Layout */
+.dashboard-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 15px;
+  margin-top: 15px;
+  height: calc(100% - 60px);
+}
+
+.panel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  height: 100%;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-header h2 {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+/* Fleet List */
+.fleet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.fleet-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.fleet-card.active {
+  border-color: hsla(190, 100%, 50%, 0.3);
+  background: hsla(190, 100%, 50%, 0.02);
+}
+
+.fleet-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.fleet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.drone-id {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.drone-status-tag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
+
+.status-active { background: hsla(140, 100%, 50%, 0.1); color: var(--success); }
+.status-charging { background: hsla(40, 100%, 50%, 0.1); color: var(--warning); }
+.status-maintenance { background: hsla(10, 100%, 50%, 0.1); color: var(--danger); }
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.telemetry-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.telemetry-item .label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.telemetry-item .value {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* Weather Widget */
+.weather-widget {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.weather-info {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.weather-temp {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.weather-desc {
+  font-size: 12px;
+  color: var(--success);
+}
+
+.weather-details {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alert-none {
+  color: var(--success);
+}
+
+/* Center Map Area */
+.map-panel {
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.map-panel .panel-header {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: rgba(10, 11, 15, 0.8);
+  border: 1px solid var(--border-color);
+  padding: 10px 15px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
+
+/* Map Markers Styling */
+.hub-marker {
+  background: rgba(10, 11, 15, 0.9);
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 22px;
+  color: var(--primary);
+  font-size: 14px;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.drone-marker {
+  font-size: 20px;
+  text-align: center;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Buttons */
+.map-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background-color: var(--danger);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: hsl(10, 100%, 40%);
+  box-shadow: 0 0 10px hsla(10, 100%, 50%, 0.4);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Terminal Log */
+.terminal-log {
+  flex: 1;
+  background: #06070a;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: monospace;
+  font-size: 11px;
+  padding: 10px;
+  overflow-y: auto;
+  color: #00ff66;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.log-time { color: var(--text-muted); }
+.log-tag { font-weight: bold; }
+.tag-warn { color: var(--warning); }
+.tag-halt { color: var(--danger); }
+.tag-drone { color: var(--primary); }
+
+.chart-container {
+  height: 120px;
+  position: relative;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
