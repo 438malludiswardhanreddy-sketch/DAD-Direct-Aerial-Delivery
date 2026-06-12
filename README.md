@@ -297,6 +297,34 @@ The research and technical foundations of DAD are documented throughout the repo
 
 ---
 
+## 🔬 DAD Validation Philosophy
+
+The Direct Aerial Delivery (DAD) project follows a strict evidence-based engineering methodology. Every technical claim, performance metric, and validation result must be supported by traceable engineering evidence.
+
+Validation within DAD is built upon four fundamental pillars:
+
+$$\text{Photo} \rightarrow \text{Evidence} \quad\Big|\quad \text{Video} \rightarrow \text{Demonstration} \quad\Big|\quad \text{CSV / Log Data} \rightarrow \text{Measurements} \quad\Big|\quad \text{Report} \rightarrow \text{Analysis}$$
+
+These pillars establish a complete chain of verification from system implementation to engineering conclusions.
+
+### Evidence Hierarchy
+
+*   **Photo $\rightarrow$ Evidence**: Photographs provide proof of hardware configuration, assembly status, wiring integrity, sensor installation, calibration procedures, and test environments.
+*   **Video $\rightarrow$ Demonstration**: Videos provide visual confirmation that system behaviours occur as intended, including mission execution, obstacle avoidance, telemetry operation, emergency landing procedures, and autonomous flight actions.
+*   **CSV / Log Data $\rightarrow$ Measurements**: Telemetry logs, MAVLink records, PX4 ULog files, calibration datasets, and benchmark outputs provide objective numerical measurements used for performance evaluation.
+*   **Report $\rightarrow$ Analysis**: Engineering reports interpret the collected evidence, document procedures, explain observations, evaluate results, identify limitations, and propose future improvements.
+
+### Traceability Principle
+
+Every statement within DAD should be traceable to one or more forms of supporting evidence.
+
+*   No performance claim without measurements.
+*   No validation claim without logs.
+*   No operational claim without demonstration.
+*   No engineering conclusion without analysis.
+
+---
+
 ## 🤝 Contributions
 Contributions from students, researchers, drone engineers, robotics developers, and aviation professionals are welcome.
 
