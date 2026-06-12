@@ -32,7 +32,7 @@ When GNSS signal is lost completely, VIO systems use onboard camera feeds to tra
 
 ## 3. Sensor Fusion for Collision Avoidance
 Integrating vision and range sensors is a primary research area for drone safety.
-*   **Camera-LiDAR Fusion**: Cameras excel at classification (e.g., classifying an object as a bird or a kite using YOLO models), but struggle with depth estimation. LiDAR provides millimeter-accurate range measurements but lacks semantic understanding. Fusing these sensors provides a rich 3D representation of the environment.
+*   **Camera-LiDAR Fusion**: Cameras excel at classification (e.g., classifying an object as a bird or a kite using YOLO models), but struggle with depth estimation. LiDAR provides millimetre-accurate range measurements but lacks semantic understanding. Fusing these sensors provides a rich 3D representation of the environment.
 *   **Coordinate Projection**: Projecting 3D LiDAR point clouds onto 2D camera frames requires spatial calibration (extrinsic calibration matrices). In small UAVs, calibration errors due to frame flex and motor vibrations require robust software filters (like Kalman tracking filters) to prevent false positives and alignment mismatches.
 
 ---

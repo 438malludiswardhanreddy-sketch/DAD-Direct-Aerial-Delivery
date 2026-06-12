@@ -5,7 +5,7 @@ All notable changes to the DAD (Direct Aerial Delivery) project will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2026-06-12
+## [0.2.0-academic-edition] - 2026-06-12
 ### Added
 - Created complete, professional multi-component project structure.
 - Developed FastAPI backend with telemetry, order routing, and WebSocket support.

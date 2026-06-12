@@ -78,6 +78,32 @@ class TestDADSystem(unittest.TestCase):
         threat = {"distance_m": 4.0, "azimuth_deg": 10.0, "threat_detected": True}
         offset = controller.calculate_avoidance_yaw(threat)
         self.assertLess(offset, 0.0)
+        
+        # Test extreme close distance (dist < 2.0)
+        threat_close = {"distance_m": 1.5, "azimuth_deg": 10.0, "threat_detected": True}
+        self.assertEqual(controller.calculate_avoidance_yaw(threat_close), 999.0)
+        
+        # Test no threat
+        threat_none = {"threat_detected": False}
+        self.assertEqual(controller.calculate_avoidance_yaw(threat_none), 0.0)
+
+        # Test ObstacleAvoidanceEngine process_threat
+        from autonomous.obstacle_avoidance import ObstacleAvoidanceEngine, TreeAvoidanceEngine, BuildingAvoidanceEngine
+        engine = ObstacleAvoidanceEngine(clearance_m=5.0)
+        self.assertEqual(engine.process_threat({"distance_m": 1.5})["action"], "HOLD")
+        self.assertEqual(engine.process_threat({"distance_m": 3.0})["action"], "STEER")
+
+        # Test TreeAvoidanceEngine
+        tree_eng = TreeAvoidanceEngine(clearance_m=6.0)
+        self.assertEqual(tree_eng.calculate_avoidance({"distance_m": 8.0, "azimuth_deg": 10.0}), 0.0)
+        self.assertEqual(tree_eng.calculate_avoidance({"distance_m": 4.0, "azimuth_deg": 10.0}), -20.0)
+        self.assertEqual(tree_eng.calculate_avoidance({"distance_m": 4.0, "azimuth_deg": -10.0}), 20.0)
+
+        # Test BuildingAvoidanceEngine
+        build_eng = BuildingAvoidanceEngine(clearance_m=5.0)
+        self.assertEqual(build_eng.calculate_avoidance({"distance_m": 7.0, "azimuth_deg": 10.0}), 0.0)
+        self.assertEqual(build_eng.calculate_avoidance({"distance_m": 3.0, "azimuth_deg": 10.0}), -35.0)
+        self.assertEqual(build_eng.calculate_avoidance({"distance_m": 3.0, "azimuth_deg": -10.0}), 35.0)
 
     def test_weather_monitor(self):
         monitor = WeatherMonitor()

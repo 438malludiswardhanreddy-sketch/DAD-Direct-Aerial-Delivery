@@ -29,7 +29,7 @@ This document details the accuracy testing, multipath reflection analyses, and l
 | :--- | :---: | :---: | :---: |
 | **Standard GPS (No RTK)** | <2.5 m | <5.0 m | 1.82 m (Simulation Placeholder) |
 | **RTK Float (Corrections lock)** | <0.5 m | <1.0 m | 0.28 m (Simulation Placeholder) |
-| **RTK Fix (Centimeter lock)** | <0.02 m | <0.05 m | 0.012 m (Simulation Placeholder) |
+| **RTK Fix (Centimetre lock)** | <0.02 m | <0.05 m | 0.012 m (Simulation Placeholder) |
 
 ---
 

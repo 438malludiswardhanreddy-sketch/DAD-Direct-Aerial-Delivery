@@ -22,5 +22,5 @@
 *   **Threat**: Attacker broadcasts fake GPS signals indicating the drone is at a different location.
 *   **Impact**: High. Navigation error, potential crash.
 *   **Safeguards**:
-    *   Integrate **dual redundant RTK-GPS** receivers. Discrepancies between modules exceeding 1.5 meters trigger an immediate hover/failsafe mode.
+    *   Integrate **dual redundant RTK-GPS** receivers. Discrepancies between modules exceeding 1.5 metres trigger an immediate hover/failsafe mode.
     *   Compare GPS movements with IMU accelerometer integrations. If GPS indicates high-velocity movements mismatching IMU telemetry, revert control to Optical Flow navigation and land immediately.

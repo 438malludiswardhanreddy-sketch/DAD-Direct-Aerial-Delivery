@@ -16,7 +16,7 @@ This document outlines the planned future milestones and technical goals for the
 
 ## Phase 3: Advanced BVLOS & Fleet Scale (Q4 2026)
 - [ ] Implement secure 5G cellular telemetry channel fallback.
-- [ ] Integrate dual RTK-GPS receivers for centimeter-level landing accuracy.
+- [ ] Integrate dual RTK-GPS receivers for centimetre-level landing accuracy.
 - [ ] Create multi-drone fleet collision avoidance algorithms.
 - [ ] Obtain DGCA BVLOS flight clearance certification.
 

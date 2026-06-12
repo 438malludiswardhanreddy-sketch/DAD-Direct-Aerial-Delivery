@@ -49,6 +49,29 @@ class TestPX4MavlinkBridge(unittest.TestCase):
         self.assertIn("battery_pct", telemetry_data)
         self.assertIn("flight_mode", telemetry_data)
 
+    def test_disconnected_behavior(self):
+        """Verifies that operations behave correctly when the bridge is not connected."""
+        disconnected_bridge = PX4MavlinkBridge(connection_string="udp:127.0.0.1:14540", force_mock=True)
+        # Not connected, should fail/ignore
+        success = disconnected_bridge.upload_mission([{"lat": 17.6610, "lon": 75.9070, "alt": 45.0}])
+        self.assertFalse(success)
+        
+        # update_telemetry shouldn't fail
+        disconnected_bridge.update_telemetry()
+        
+        # get_telemetry on disconnected should just return the cache
+        data = disconnected_bridge.get_telemetry()
+        self.assertEqual(data["latitude"], 17.6590)
+
+    def test_fallback_on_invalid_endpoint(self):
+        """Verifies that connecting to an invalid endpoint falls back to mock mode gracefully."""
+        fallback_bridge = PX4MavlinkBridge(connection_string="invalid_serial_port", force_mock=False)
+        self.assertFalse(fallback_bridge.is_connected)
+        success = fallback_bridge.connect()
+        self.assertTrue(success)
+        self.assertTrue(fallback_bridge.is_connected)
+        self.assertTrue(fallback_bridge.mock_mode)
+
 class TestPX4TelemetryListener(unittest.TestCase):
     def test_listener_lifecycle(self):
         """Verifies starting and stopping the background telemetry daemon."""

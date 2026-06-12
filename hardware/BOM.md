@@ -10,7 +10,7 @@ This document lists the hardware components selected for the Direct Aerial Deliv
 | **Companion Computer** | Raspberry Pi 5 (8GB RAM) | Quad-core ARM Cortex-A76, PCIe 2.0, UART/I2C | 1 | $80.00 | ₹6,640 | Onboard YOLO computer vision, sensor fusion, cloud telemetry |
 | **Power Module** | PM02 V3 Power Management Board | Up to 12S LiPo, 5.2V regulator output, I2C telemetry | 1 | $32.00 | ₹2,650 | Regulated power delivery to Pixhawk, current/voltage sensing |
 | **LiDAR Sensor** | Benewake TFmini-S LiDAR Rangefinder | 100Hz sample rate, 0.1-12m range, UART/I2C | 1 | $39.00 | ₹3,200 | Forward obstacle detection and wire avoidance |
-| **GNSS Module** | Holybro F9P RTK GPS System | Multi-band RTK, centimeter-level precision, UART | 2 | $120.00 | ₹9,960 | Precision waypoint guidance and landing station alignment |
+| **GNSS Module** | Holybro F9P RTK GPS System | Multi-band RTK, centimetre-level precision, UART | 2 | $120.00 | ₹9,960 | Precision waypoint guidance and landing station alignment |
 | **Telemetry Radio** | Holybro Micro Telemetry Radio v3 (915MHz) | 100mW transmit power, serial interface, MAVLink | 1 Set | $45.00 | ₹3,730 | Ground Control Station (GCS) telemetry backup link |
 | **Propulsion Motors** | T-Motor MN4014 400KV Brushless Motor | Max thrust 2.9kg/motor, 24V nominal operating voltage | 6 | $68.00 | ₹5,640 | Main hexacopter propulsion units |
 | **ESCs** | T-Motor AIR40A 40A Brushless ESC | 6S LiPo input, 40A continuous, rapid throttle response | 6 | $25.00 | ₹2,070 | Motor electronic speed controllers |

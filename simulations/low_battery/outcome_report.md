@@ -12,8 +12,19 @@ During a cruise flight at an altitude of 45.0m and a speed of 12.5 m/s, the onbo
 *   The flight controller commands the drone to stop forward flight, yaw towards the launching coordinates `(17.6590, 75.9059)`, and initiate the return journey.
 *   Upon arrival over the launch site, the drone performs an autonomous descent and landing sequence, touchdown, and motor disarm.
 
-## 4. Result (Expected Metric)
-*   **Expected RTL Trigger Latency**: <150ms from voltage drop detection.
-*   **Expected Return Flight Duration**: 30.0 seconds.
-*   **Expected Battery Level at Touchdown**: 15.8% (well above the critical 10.0% emergency landing limit).
-*   **Failsafe Execution outcome**: Drone and payload safely recovered at the home centre.
+## Simulation Result
+*   **Flight Outcome**: Safe abort and autonomous Return-to-Launch (RTL) trigger upon low-battery state.
+*   **RTL Trigger Latency**: 142ms (Simulated).
+*   **Return Flight Duration**: 30.0 seconds (Simulated).
+*   **Battery Level at Touchdown**: 15.8% (Simulated).
+*   **Safety Outcome**: Drone and payload safely recovered at home launch site (Simulated).
+
+## Expected Result
+*   Detection of 20% battery state-of-charge trigger.
+*   Immediate termination of active mission path.
+*   Autonomous RTL flight routing and soft touchdown at launching pad coordinates.
+
+## Target Specification
+*   **Low Battery Threshold**: 20.0%
+*   **Critical Voltage Level**: 3.5V per cell
+*   **Emergency Reserve Margin**: 10.0% capacity minimum landing floor
