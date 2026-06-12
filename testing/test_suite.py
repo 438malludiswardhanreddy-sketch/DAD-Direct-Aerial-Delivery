@@ -39,6 +39,8 @@ from backend.mission_service import MissionService
 from backend.drone_registry import DroneRegistry
 from backend.database.models import DroneModel
 
+from testing.px4_integration_test import TestPX4MavlinkBridge, TestPX4TelemetryListener
+
 class TestDADSystem(unittest.TestCase):
     
     def test_camera_detection(self):

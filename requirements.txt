@@ -6,3 +6,4 @@ websockets>=11.0
 numpy>=1.21.0
 opencv-python>=4.6.0
 PyJWT>=2.6.0
+pymavlink>=2.4.0
