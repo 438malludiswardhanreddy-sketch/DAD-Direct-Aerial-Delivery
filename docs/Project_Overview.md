@@ -9,7 +9,7 @@ The project, titled **Direct Aerial Delivery (DAD)**, addresses the last-mile lo
 
 ## 2. System Architecture Design
 The project is split into key functional subsystems:
-*   **Onboard Autopilot Core**: Holybro Pixhawk 6C running the PX4 Autopilot firmware, responsible for real-time stabilization, attitude estimation, and motor speed control.
+*   **Onboard Autopilot Core**: Holybro Pixhawk 6C running the PX4 Autopilot firmware, responsible for real-time stabilisation, attitude estimation, and motor speed control.
 *   **Onboard Companion Computer**: Raspberry Pi 5 module performing local range filtering and sensor fusion tasks.
 *   **Sensor Fusion Node**: Merges distance inputs from a forward-facing Benewake TFmini LiDAR with video camera detection boundaries.
 *   **Cloud Control Centre Backend**: FastAPI server handling telemetry reporting and client order dispatch.

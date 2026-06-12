@@ -74,7 +74,7 @@ This Jacobian scales the Kalman gain, ensuring that range updates from the LiDAR
 
 ## 3. Algorithm Flow and Validation
 1.  **Bounding Box Detection**: The YOLO model processes camera frames to output bounding boxes.
-2.  **Gating and Association**: The system verifies if the LiDAR rangefinder beam aligns with the detected bounding box center.
+2.  **Gating and Association**: The system verifies if the LiDAR rangefinder beam aligns with the detected bounding box centre.
 3.  **Correction Step**:
     *   If both camera and LiDAR detect the obstacle, the EKF updates using the complete measurement vector $z_k = [u, v, d]^T$.
     *   If the camera view is occluded but the LiDAR maintains a lock, the EKF updates using only the range component ($z_k = [d]$).

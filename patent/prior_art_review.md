@@ -20,5 +20,5 @@ This document logs prior patent publications and academic literature, highlighti
 ## 2. Academic Literature Comparison
 
 ### 2.1. "Monocular camera and 1D LiDAR fusion for autonomous flight"
-*   **Analysis**: Existing academic research (e.g., in IEEE Robotics letters) focuses on indoor SLAM (Simultaneous Localization and Mapping). 
+*   **Analysis**: Existing academic research (e.g., in IEEE Robotics letters) focuses on indoor SLAM (Simultaneous Localisation and Mapping). 
 *   **DAD Differentiator**: DAD integrates this sensor configuration with PX4 autopilot failsafes and DGCA geofencing rules, targeting outdoor, urban package delivery.

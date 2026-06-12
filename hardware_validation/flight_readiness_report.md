@@ -20,7 +20,7 @@ Before conducting physical BVLOS or line-of-sight flight trials, the DAD UAV pla
 *   **Perception Sensors**: Benewake TFmini-S LiDAR rangefinder and Pi Camera Module 3 calibrated for extrinsic offset projections.
 
 ### 1.3. Software & Telemetry Status
-*   **YOLO Obstacle Node**: Image quantization (INT8) confirmed active on Raspberry Pi 5. Inference latency verified at $<15$ms.
+*   **YOLO Obstacle Node**: Image quantisation (INT8) confirmed active on Raspberry Pi 5. Inference latency verified at $<15$ms.
 *   **Communication Link**: LTE WebSocket and 915MHz backup links verified for redundant failsafe swaps. Loss-of-signal timeout set to 3.0 seconds.
 *   **Geofence configuration**: Cylinder geofence radius set to 500m; altitude ceiling capped at 45m AGL.
 

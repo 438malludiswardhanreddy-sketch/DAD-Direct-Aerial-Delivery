@@ -22,7 +22,7 @@ This document provides the standard operating procedures (SOPs) and flight check
 - [ ] **YOLO Node**: Confirm the camera stream is active and YOLO inference starts.
 - [ ] **LiDAR feed**: Check TFmini-S output values in QGroundControl.
 - [ ] **GNSS Lock**: Verify GPS 1 and GPS 2 show active 3D Fix or RTK Fix state. Dilution of Precision (HDOP) must be $<1.0$.
-- [ ] **NPNT License**: Verify the signed XML flight key is uploaded to the companion computer and the arming lock is released.
+- [ ] **NPNT Licence**: Verify the signed XML flight key is uploaded to the companion computer and the arming lock is released.
 
 ---
 

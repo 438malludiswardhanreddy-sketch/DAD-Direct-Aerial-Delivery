@@ -53,7 +53,7 @@ The DAD architecture consists of six integrated layers, as shown in the system b
 1.  **Ground Control Station (GCS) & Dashboard**: A web-based Leaflet interface that displays live telemetry and geofence status.
 2.  **FastAPI Backend**: Manages WebSocket/MQTT telemetry streams and handles SQL database commits.
 3.  **Companion Computer (Raspberry Pi 5)**: Runs the YOLO object detector and Kalman sensor fusion.
-4.  **Autopilot (Holybro Pixhawk 6C)**: Executes attitude stabilization and motor mixing.
+4.  **Autopilot (Holybro Pixhawk 6C)**: Executes attitude stabilisation and motor mixing.
 
 ---
 

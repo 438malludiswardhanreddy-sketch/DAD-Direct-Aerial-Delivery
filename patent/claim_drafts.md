@@ -6,7 +6,7 @@ This document drafts the preliminary patent claims for the DAD multi-sensor fusi
 ## 1. Independent Claim 1
 **We claim:**
 1.  An autonomous navigation and failsafe routing system for an unmanned aerial vehicle (UAV), comprising:
-    *   an autopilot flight controller configured to execute attitude stabilization and waypoint navigation;
+    *   an autopilot flight controller configured to execute attitude stabilisation and waypoint navigation;
     *   a companion computer linked to the autopilot flight controller;
     *   a monocular camera mounted on the UAV and configured to capture a forward-facing 2D video feed; and
     *   a single-beam LiDAR rangefinder aligned with the optical axis of the monocular camera;

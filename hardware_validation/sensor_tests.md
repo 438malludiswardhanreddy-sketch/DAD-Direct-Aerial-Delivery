@@ -36,12 +36,12 @@ This document outlines the validation procedures, laboratory bench test protocol
 *   **Target**: Place a 3D silhouette model of a bird (obstacle target) at varying horizontal offsets to calibrate the YOLO bounding boxes.
 
 ### 2.2. Frame Processing Latency
-Measuring YOLO inference times on the Raspberry Pi 5 companion computer using dynamic quantization (INT8) and NCNN/ONNX runtimes.
+Measuring YOLO inference times on the Raspberry Pi 5 companion computer using dynamic quantisation (INT8) and NCNN/ONNX runtimes.
 
 *   **Inference Latency (FP32 precision)**:
     *   *Target Metric*: <45ms.
     *   *Simulation Placeholder*: 38.2ms.
-*   **Inference Latency (INT8 quantized)**:
+*   **Inference Latency (INT8 quantised)**:
     *   *Expected Metric*: <20ms.
     *   *Simulation Placeholder*: 12.4ms.
 *   **Optical Flow Tracker Update Latency**:

@@ -1,7 +1,7 @@
 # Outcome Report: Emergency Landing
 
 ## 1. Input Context
-During a cruise flight at an altitude of 45.0m and a speed of 12.5 m/s, the drone encounters a sudden localized storm. Onboard environmental sensors report precipitation levels of 12.0 mm/hr, which exceeds the design safety threshold of 8.0 mm/hr for the airframe. The battery level is at 74.2%.
+During a cruise flight at an altitude of 45.0m and a speed of 12.5 m/s, the drone encounters a sudden localised storm. Onboard environmental sensors report precipitation levels of 12.0 mm/hr, which exceeds the design safety threshold of 8.0 mm/hr for the airframe. The battery level is at 74.2%.
 
 ## 2. Decision Logic
 *   **WeatherMonitor Module**: Analysing real-time precipitation sensor feeds. Flags a weather abort condition when threshold is breached.

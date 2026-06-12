@@ -33,7 +33,7 @@ This directory contains presentation templates and guidelines for undergraduate 
 
 ---
 
-## 3. Final Defense / Viva Outline (`Final_Defense.pptx`)
+## 3. Final Defence / Viva Outline (`Final_Defense.pptx`)
 *Target Duration: 20 mins | Audience: External University Examiner & Head of Department*
 
 *   **Slide 1: Title Slide & Candidate IDs**

@@ -10,7 +10,7 @@
 ### 1.2 Avionics & Processing Units
 *   **Autopilot**: Holybro Pixhawk 6C Flight Controller running PX4 Autopilot v1.14.
 *   **Companion Processor**: Raspberry Pi 5 (8GB LPDDR5 RAM) running Ubuntu 22.04 LTS.
-*   **Positioning**: Dual F9P RTK-GPS receiver modules for sub-decimetre localization accuracy.
+*   **Positioning**: Dual F9P RTK-GPS receiver modules for sub-decimetre localisation accuracy.
 
 ### 1.3 Sensor Arrays
 *   **Rangefinder**: Benewake TFmini-S LiDAR sensor (Forward-facing, range up to 12 metres).

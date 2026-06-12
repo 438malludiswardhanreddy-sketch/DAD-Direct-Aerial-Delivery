@@ -6,7 +6,7 @@ This document lists the hardware components selected for the Direct Aerial Deliv
 | Component Category | Component Name / Model | Specs & Interface | Qty | Unit Price (USD) | Unit Price (INR) | Primary Purpose |
 | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
 | **Airframe** | Tarot 680Pro Carbon Fibre Hexacopter Frame | 680mm wheel-base, foldable carbon tubes, integrated PCB | 1 | $145.00 | ₹12,000 | Primary structural chassis, power routing centre |
-| **Autopilot** | Holybro Pixhawk 6C Flight Controller | STM32H7, dual IMUs, MAVLink, USB-C, serial ports | 1 | $280.00 | ₹23,200 | Flight control, attitude stabilization, failsafes |
+| **Autopilot** | Holybro Pixhawk 6C Flight Controller | STM32H7, dual IMUs, MAVLink, USB-C, serial ports | 1 | $280.00 | ₹23,200 | Flight control, attitude stabilisation, failsafes |
 | **Companion Computer** | Raspberry Pi 5 (8GB RAM) | Quad-core ARM Cortex-A76, PCIe 2.0, UART/I2C | 1 | $80.00 | ₹6,640 | Onboard YOLO computer vision, sensor fusion, cloud telemetry |
 | **Power Module** | PM02 V3 Power Management Board | Up to 12S LiPo, 5.2V regulator output, I2C telemetry | 1 | $32.00 | ₹2,650 | Regulated power delivery to Pixhawk, current/voltage sensing |
 | **LiDAR Sensor** | Benewake TFmini-S LiDAR Rangefinder | 100Hz sample rate, 0.1-12m range, UART/I2C | 1 | $39.00 | ₹3,200 | Forward obstacle detection and wire avoidance |

@@ -33,7 +33,7 @@ This boots the simulated typhoon hexacopter at the default home coordinates.
 ### Step 2.3: Start QGroundControl (GCS)
 *   Open the QGroundControl application on your desktop.
 *   QGroundControl automatically connects to the PX4 SITL instance over port `14550`.
-*   Ensure that the virtual flight map centers on the launch coordinates.
+*   Ensure that the virtual flight map centres on the launch coordinates.
 
 ---
 

@@ -13,7 +13,7 @@ Global path planning computes an optimal trajectory prior to takeoff based on st
 
 ### 1.2. Local Path Planning and Reactive Steering
 Local planning handles dynamic obstacles and sensor-detected threats in real time.
-*   **Vector Field Histogram (VFH)**: Originally developed for ground robots by Borenstein and Koren (1991), VFH has been adapted for quadrotors. It maps sensor readings (like LiDAR range scans) into a polar histogram of obstacle density, allowing the vehicle to select paths that minimize collision risk. Its drawback is its susceptibility to local minima in concave obstacle configurations.
+*   **Vector Field Histogram (VFH)**: Originally developed for ground robots by Borenstein and Koren (1991), VFH has been adapted for quadrotors. It maps sensor readings (like LiDAR range scans) into a polar histogram of obstacle density, allowing the vehicle to select paths that minimise collision risk. Its drawback is its susceptibility to local minima in concave obstacle configurations.
 *   **Dynamic Window Approach (DWA)**: Fox et al. (1997) proposed DWA, which operates directly in the velocity space of the vehicle, accounting for acceleration and torque limits. It is highly effective for fast-moving multirotors but requires precise dynamic models of the airframe.
 
 ---
