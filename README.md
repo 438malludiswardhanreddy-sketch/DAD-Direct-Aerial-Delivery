@@ -9,10 +9,88 @@
 
 ![DAD Hero Banner](assets/hero_banner.png)
 
+
+---
+
+```text
+Customer Order
+      ↓
+Mission Planner
+      ↓
+Route Optimiser
+      ↓
+PX4 Autopilot
+      ↓
+Sensor Fusion
+      ↓
+Obstacle Avoidance
+      ↓
+Telemetry Streaming
+      ↓
+FastAPI Backend
+      ↓
+Dashboard & Mobile App
+```
+
 ---
 
 ## 📖 Project Brief
 **Direct Aerial Delivery (DAD)** is a research and development platform for autonomous drone-based logistics and last-mile aerial delivery systems. Developed as an undergraduate final year B.E. engineering design project in Solapur, Maharashtra, India, the repository implements an integrated system-level R&D prototype bridging flight controller synchronization, monocular vision and single-axis LiDAR sensor fusion, real-time telemetry streaming, and automated failsafe logic.
+
+---
+
+## 💡 Why DAD Matters
+
+Current delivery systems face challenges including:
+- Traffic congestion
+- Emergency medical supply delays
+- Limited access to remote regions
+- High last-mile delivery costs
+
+DAD explores autonomous aerial logistics as a scalable solution through intelligent routing, sensor fusion, and real-time telemetry monitoring.
+
+---
+
+## 🧑💻 Engineering Contributions
+
+DAD was developed to demonstrate end-to-end UAV systems engineering and autonomous logistics research.
+
+### Key Contributions
+
+- Designed the complete drone logistics architecture.
+- Developed sensor fusion algorithms integrating LiDAR, camera, GPS, and IMU data.
+- Implemented autonomous obstacle avoidance and weather-aware safety logic.
+- Built PX4 and MAVLink communication modules.
+- Developed FastAPI telemetry services and WebSocket streaming.
+- Created simulation validation scenarios using PX4 SITL and Gazebo.
+- Produced academic research documentation and IEEE publication drafts.
+
+---
+
+## 🛠️ Skills & Technologies Mapping
+
+| Technical Area | Technology | Usage |
+| :--- | :--- | :--- |
+| **UAV Systems** | PX4, MAVLink | Flight Control |
+| **AI & Perception** | OpenCV, YOLO | Obstacle Detection |
+| **Sensor Fusion** | EKF, Kalman Filter | State Estimation |
+| **Backend** | FastAPI, Python | Telemetry Services |
+| **Databases** | SQLite, PostgreSQL | Mission Storage |
+| **Cloud** | Docker, AWS ECS | Deployment |
+| **Mobile** | React Native | Customer Application |
+| **Dashboard** | HTML, CSS, JavaScript | Fleet Monitoring |
+| **DevOps** | GitHub Actions | CI/CD |
+
+---
+
+## 🎓 Academic Deliverables
+
+- Final Year Engineering Project
+- IEEE Research Paper Draft
+- Patent Documentation
+- Simulation Validation Reports
+- Hardware Validation Framework
+- PX4 SITL Demonstrations
 
 ---
 
@@ -233,10 +311,19 @@ Contributions from students, researchers, drone engineers, robotics developers, 
 
 ---
 
-## 👨💻 Author & Contact
-**Mallu Diswardhan Reddy**  
-Final Year Engineering Student  
-Drone Systems & Autonomous Logistics Research  
+## 👨💻 Author
+
+**Mallu Diswardhan Reddy**
+
+Electronics and Communication Engineering Student
+
+Areas of Interest:
+- UAV Systems
+- Drone Logistics
+- Sensor Fusion
+- Autonomous Navigation
+- Computer Vision
+- Embedded Systems
 
 GitHub: [https://github.com/438malludiswardhanreddy-sketch](https://github.com/438malludiswardhanreddy-sketch)
 
