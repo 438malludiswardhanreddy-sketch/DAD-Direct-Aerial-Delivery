@@ -1,7 +1,7 @@
 # Project Overview - Direct Aerial Delivery (DAD)
 
 ## 1. Introduction & Academic Framework
-This project report has been compiled by the final year project group of the **Department of Electronics and Telecommunication Engineering, Solapur University**, in partial fulfilment of the requirements for the award of the Degree of Bachelor of Engineering (B.E.).
+This project report has been compiled as an undergraduate engineering research and development project, in partial fulfilment of the requirements for the award of the Degree of Bachelor of Engineering (B.E.).
 
 The project, titled **Direct Aerial Delivery (DAD)**, addresses the last-mile logistics bottleneck. In rapidly growing Indian tier-2 smart cities like Solapur, traffic congestion, poor road layouts, and the rising overheads of traditional delivery methods make ground transport slow and inefficient. This research and development platform focuses on building an autonomous drone-based logistics framework to transport lightweight medical supplies and parcels across designated corridors.
 

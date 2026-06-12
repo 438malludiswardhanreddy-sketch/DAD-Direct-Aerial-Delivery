@@ -10,7 +10,7 @@
 ![DAD Hero Banner](assets/hero_banner.png)
 
 ## 📖 Project Brief
-**Direct Aerial Delivery (DAD)** is a final year undergraduate engineering design project and research platform focusing on autonomous drone-based logistics and last-mile aerial delivery systems. Under the academic supervision of the Department of Electronics and Telecommunication Engineering, Solapur University, this project implements a complete, integrated system-level R&D prototype that bridges drone firmware logic, local sensor fusion, companion computer routing, cloud telemetry ingestion, and client booking.
+**Direct Aerial Delivery (DAD)** is a final year undergraduate engineering design project and research platform focusing on autonomous drone-based logistics and last-mile aerial delivery systems. Developed as an undergraduate engineering research and development project, this project implements a complete, integrated system-level R&D prototype that bridges drone firmware logic, local sensor fusion, companion computer routing, cloud telemetry ingestion, and client booking.
 
 ---
 
