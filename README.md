@@ -1,11 +1,14 @@
 # 🛸 DAD — Direct Aerial Delivery
 > **Research and Development Prototype — Simulation-Validated Architecture — Under Active Development**
 
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen)](#)
-[![Python](https://img.shields.io/badge/Python-3.10-blue)](#)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100-teal)](#)
-[![PX4 Autopilot](https://img.shields.io/badge/PX4-v1.14-orange)](#)
-[![Licence](https://img.shields.io/badge/Licence-MIT-green)](#)
+[![Tests Status](https://img.shields.io/badge/Tests-Passing-brightgreen?style=flat-square)](#)
+[![Coverage](https://img.shields.io/badge/Coverage-83%25-success?style=flat-square)](#)
+[![Python](https://img.shields.io/badge/Python-3.10+-blue?style=flat-square&logo=python&logoColor=white)](#)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat-square&logo=fastapi&logoColor=white)](#)
+[![PX4](https://img.shields.io/badge/PX4%20Autopilot-v1.14-orange?style=flat-square)](#)
+[![MAVLink](https://img.shields.io/badge/MAVLink-v2.0-blue?style=flat-square)](#)
+[![Licence](https://img.shields.io/badge/Licence-MIT-green?style=flat-square)](#)
+[![Stage](https://img.shields.io/badge/Stage-Research%20Prototype-yellow?style=flat-square)](#)
 
 ![DAD Hero Banner](assets/hero_banner.png)
 
