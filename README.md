@@ -79,6 +79,42 @@ Whitepapers detailing the mathematical, algorithmic, and regulatory underpinning
 
 ---
 
+## 📊 Repository Statistics
+
+*   **Total Source Files**: 214
+*   **Validation Tests**: 21 (All passing)
+*   **System Architectures**: 3 (.png & .mermaid)
+*   **Simulation Scenarios**: 5 (SITL verified)
+*   **Research Papers**: 4 (Indian English drafts)
+*   **Patent IP Notes**: 4 (Invention disclosure & claims)
+*   **CI/CD Pipelines**: 2 (CI build and ECR/ECS CD templates)
+
+---
+
+## 📸 Professional Portfolio Visual Showcase
+
+### 📡 System Architecture Design
+The high-level R&D system layout mapping companion and autopilot tasks:
+![System Architecture](architecture/system_architecture.png)
+
+### 💻 Software Component Architecture
+The module blocks, state trackers, and API routes within the ecosystem:
+![Software Architecture](architecture/software_architecture.png)
+
+### ☁️ Cloud Deployment Architecture
+AWS container clustering, RDS database nodes, and ingress configurations:
+![Deployment Architecture](architecture/deployment_architecture.png)
+
+### 📊 Control Room Dashboard Interface
+The telemetry dashboard displaying real-time coordinates, battery decays, and geofence warnings:
+![Dashboard Interface](assets/dashboard_demo.png)
+
+### 🛸 Hexacopter Simulation Environment
+The 3D Gazebo simulator rendering the Tarot 680Pro drone in urban micro-airspace:
+![Simulation Screenshot](assets/simulation_screenshot.png)
+
+---
+
 ## ⚙️ Quick Start
 
 ### 1. Backend Ingestion Server
