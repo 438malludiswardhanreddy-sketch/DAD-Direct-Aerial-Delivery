@@ -1,0 +1,12 @@
+graph TD
+    RawLidar[Raw LiDAR measurement] -->|TFmini serial parser| LidarProc[LidarProcessor class]
+    LidarProc -->|Distance values| Kalman[RangeKalmanFilter class]
+    
+    RawCam[Raw Camera frame] -->|YOLO ONNX model| ONNX[YOLOv11 Inference]
+    ONNX -->|Detect coordinates| CamDet[CameraObstacleDetector class]
+    
+    Kalman -->|Filtered range metres| Fusion[SensorFusionNode class]
+    CamDet -->|Obstacle bounding boxes| Fusion
+    
+    Fusion -->|Fused threat coordinate block| Predictor[TrajectoryPredictor class]
+    Predictor -->|Calculate TTC| Decision[Dynamic Steering/Yaw Override]

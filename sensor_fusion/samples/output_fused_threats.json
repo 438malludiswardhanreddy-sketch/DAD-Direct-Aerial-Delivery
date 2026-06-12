@@ -1,0 +1,13 @@
+{
+  "frame_id": 4821,
+  "timestamp": 1781208335,
+  "fused_obstacles": [
+    {
+      "class_name": "wire",
+      "distance_m": 8.52,
+      "azimuth_deg": -3.5,
+      "threat_level": "MEDIUM_WARNING",
+      "action_required": "RECALCULATE_YAW_OFFSET"
+    }
+  ]
+}

@@ -23,4 +23,4 @@ This document outlines the planned future milestones and technical goals for the
 ## Phase 4: Production & Smart Hubs (Q1-Q2 2027)
 - [ ] Design and prototype automated drone landing and charging hubs.
 - [ ] Integrate payment gateway (Stripe/Crypto) and dynamic shipping pricing.
-- [ ] Launch pilot commercial delivery service in Solapur smart city.
+- [ ] Conduct controlled pilot validation in a designated testing environment subject to regulatory approvals.

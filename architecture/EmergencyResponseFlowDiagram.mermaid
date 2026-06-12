@@ -1,0 +1,13 @@
+graph TD
+    Precipitation[Precipitation Sensor] -->|Rain percentage| Monitor[WeatherMonitor class]
+    Monitor -->|Rain >= 80%| Failsafe[Failsafe Triggered]
+    
+    Battery[Battery Telemetry] -->|Voltage/Percentage| BatEngine[BatteryManager class]
+    BatEngine -->|Percentage <= 20%| Failsafe
+    
+    Failsafe --> Locate[EmergencyLandingPlanner class]
+    Locate -->|Search coordinates| HubDB[( designated landing hubs )]
+    HubDB -->|Closest hub coordinates| Target[Landing Target Locked]
+    
+    Target --> Override[Autopilot override steer RTL]
+    Override --> Descent[Safe Autonomous Landing]

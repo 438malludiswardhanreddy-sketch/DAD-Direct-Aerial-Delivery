@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant User as Mobile Client
+    participant API as FastAPI Backend
+    participant DB as SQLite / postgres
+    participant Drone as Autopilot Core (PX4)
+
+    User->>API: POST /api/v1/orders (lat, lon, weight)
+    API->>DB: Record new mission as "Pending"
+    API->>API: Calculate route & NPNT clearance
+    API->>User: Return mission ID & clearance code
+    API->>Drone: Upload Waypoints via MAVLink
+    Drone->>Drone: Run preflight self-checks
+    Drone->>API: Post telemetry: Arming & Takeoff
+    Note over Drone: Cruise and autonomous navigation
+    Drone->>Drone: Land & Release Payload
+    Drone->>Drone: RTL (Return-to-Launch)
+    Drone->>API: Post telemetry: Landed & Disarmed
+    API->>DB: Update mission status to "Completed"

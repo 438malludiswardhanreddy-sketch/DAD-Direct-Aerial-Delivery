@@ -80,7 +80,7 @@ graph TD
 *   **Phase 5 – Mobile Application**: Create React Native client screens and live location tracking cards.
 *   **Phase 6 – Hardware Prototype**: Assemble Tarot 680Pro carbon hexacopter frame with Pixhawk 6C.
 *   **Phase 7 – Field Validation**: Conduct line-of-sight flight operations to test sensor override loops.
-*   **Phase 8 – Production MVP**: Launch local test deliveries inside Solapur smart city.
+*   **Phase 8 – Production MVP**: Conduct controlled pilot validation in a designated testing environment subject to regulatory approvals.
 
 ---
 

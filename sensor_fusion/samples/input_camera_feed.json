@@ -1,0 +1,18 @@
+[
+  {
+    "frame_id": 4821,
+    "timestamp": 1781208335,
+    "detections": [
+      {
+        "class": "wire",
+        "confidence": 0.84,
+        "bbox": [280, 210, 80, 20]
+      },
+      {
+        "class": "bird",
+        "confidence": 0.35,
+        "bbox": [120, 90, 30, 20]
+      }
+    ]
+  }
+]

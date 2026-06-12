@@ -1,0 +1,12 @@
+graph LR
+    Lidar[TFmini LiDAR range sensor] -->|Serial Distance cm| LidarProc[LiDAR range processor]
+    Camera[IMX219 camera feed] -->|Frame Arrays| ONNX[YOLOv11 ONNX inference]
+    
+    LidarProc -->|Distance metres| Kalman[Kalman range filter]
+    ONNX -->|Visual bounding box| CamDet[Camera detector parses]
+    
+    Kalman -->|Filtered range| Fusion[Sensor Fusion Node]
+    CamDet -->|Obstacle class & azimuth| Fusion
+    
+    Fusion -->|Fused threat analysis| Avoidance[Obstacle avoidance logic]
+    Avoidance -->|Corrective trajectory yaw| Guidance[Flight controller commands]

@@ -1,0 +1,7 @@
+graph TD
+    Drone[UAV Companion Computer] -->|POST /api/v1/telemetry/upload| API[FastAPI Ingestion Endpoint]
+    API -->|Write Log| DB[(SQLite / PostgreSQL DB)]
+    API -->|Update Status| DB
+    API -->|Push JSON Payload| WS[WebSocket Telemetry Hub]
+    WS -->|Broadcast stream| Web[Leaflet Dashboard Client]
+    WS -->|Broadcast stream| Mobile[Mobile Client Tracker]

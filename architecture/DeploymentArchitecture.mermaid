@@ -1,0 +1,28 @@
+graph TD
+    subgraph Client Application
+        Web[React / Next.js Control Panel]
+        Mobile[React Native Customer App]
+    end
+
+    subgraph AWS Cloud Infrastructure
+        Gateway[API Gateway / Load Balancer]
+        FastAPI[AWS EC2 / Dockerised FastAPI Backend]
+        DB[(PostgreSQL / SQLite Database)]
+        Cache[(Redis Cache Telemetry)]
+    end
+
+    subgraph Local Simulation
+        SITL[PX4 Autopilot SITL]
+        Gazebo[Gazebo classic simulation engine]
+        AirSim[AirSim / UE5 simulation viewport]
+    end
+
+    Web <-->|WebSockets / REST| Gateway
+    Mobile <-->|REST APIs| Gateway
+    Gateway <--> FastAPI
+    FastAPI <--> DB
+    FastAPI <--> Cache
+    
+    SITL <-->|MAVLink / TCP| FastAPI
+    SITL <-->|Physics API| Gazebo
+    SITL <-->|Physics API| AirSim

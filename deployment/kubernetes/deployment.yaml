@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dad-backend-deployment
+  labels:
+    app: dad-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dad-backend
+  template:
+    metadata:
+      labels:
+        app: dad-backend
+    spec:
+      containers:
+      - name: dad-backend
+        image: 438malludiswardhanreddy-sketch/dad-backend:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://dad_user:solapur_password@dad-db-service:5432/dad_db"
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
