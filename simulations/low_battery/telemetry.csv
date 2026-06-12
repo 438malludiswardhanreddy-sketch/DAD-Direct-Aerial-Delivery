@@ -1,0 +1,6 @@
+timestamp_s,latitude,longitude,altitude_m,speed_mps,battery_pct
+120,17.6680,75.9100,45.0,12.5,21.0
+125,17.6690,75.9105,45.0,12.5,20.0   # Failsafe RTL Triggered
+130,17.6675,75.9095,45.0,12.5,19.2   # Flying back to Launch
+150,17.6590,75.9059,10.0,2.1,16.5
+160,17.6590,75.9059,0.0,0.0,15.8

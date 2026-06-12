@@ -1,0 +1,9 @@
+[180.0] INFO: Position Lat=17.6610, Lon=75.9070. Altitude=45.0m. Weather: precipitation=2.0mm/hr.
+[184.2] WARN: Weather station reports precipitation increasing. Precipitation=8.5mm/hr.
+[185.0] CRITICAL: Precipitation rate (12.0mm/hr) exceeds safe threshold (8.0mm/hr). Weather abort triggered.
+[185.1] INFO: Mission aborted. Finding nearest emergency landing site.
+[185.2] INFO: Closest landing site identified: Emergency Pad E1 (17.6635, 75.9090) at distance 165m.
+[185.5] INFO: Adjusting trajectory. Diverting to Emergency Pad E1.
+[190.0] INFO: Descending. Altitude=30.0m. Approaching Emergency Pad E1.
+[200.0] INFO: Final approach. Altitude=15.0m. Aligning with precision landing beacon.
+[210.0] INFO: Touchdown on Emergency Pad E1. Disarming FMU. Battery=71.5%.

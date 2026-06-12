@@ -1,0 +1,5 @@
+timestamp_s,latitude,longitude,altitude_m,speed_mps,battery_pct
+50,17.6630,75.9080,45.0,12.5,89.5
+52,17.6632,75.9082,45.0,12.5,89.0
+54,17.6634,75.9084,48.5,10.0,88.2   # Climb and Clear Event
+56,17.6637,75.9087,48.5,12.5,87.6

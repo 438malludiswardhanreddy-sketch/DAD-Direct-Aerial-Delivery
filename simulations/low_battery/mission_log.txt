@@ -1,0 +1,7 @@
+[120.0] INFO: Position Lat=17.6680, Lon=75.9100. Battery=21.0%
+[124.8] WARN: BatteryManager reports voltage drops to 21.0V (cell voltage 3.5V).
+[125.0] CRITICAL: Battery capacity <= 20.0%. Failsafe threshold reached.
+[125.1] INFO: Mission aborted. Changing flight mode to RTL (Return-to-Launch).
+[125.2] INFO: Recalculating path to Launch Station (17.6590, 75.9059).
+[155.4] INFO: Arrived at Launch Station. Initiating landing sequence.
+[160.0] INFO: Touchdown. Disarming FMU. Battery=15.8%

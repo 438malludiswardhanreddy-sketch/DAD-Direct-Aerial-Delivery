@@ -1,0 +1,6 @@
+[50.0] INFO: Cruising at 45.0m. Telemetry links stable.
+[52.1] WARN: Sensor Fusion reports obstacle ID: wire_441 at range 9.0m.
+[52.4] INFO: Horizontal wire pattern recognized. Engaging vertical override.
+[52.5] INFO: Adjusting target altitude from 45.0m to 48.5m.
+[54.2] INFO: Altitude 48.5m reached. Obstacle cleared.
+[56.0] INFO: Continuing flight plan at adjusted cruise altitude.

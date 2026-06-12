@@ -1,0 +1,9 @@
+[0.0] INFO: FMU boot complete. Aligning EKF2 sensors.
+[2.1] INFO: GPS Lock acquired. UIN validated on DigitalSky.
+[5.0] INFO: Armed. Takeoff command received.
+[10.2] INFO: Altitude 45.0m reached. Entering CRUISE mode.
+[10.5] INFO: Cruise speed set to 12.5 m/s. Heading 28.4°
+[45.2] INFO: Position checkpoint matched. Telemetry heartbeat nominal.
+[80.1] INFO: Target destination locked. Initiating descent.
+[95.4] INFO: Touchdown detected. Releasing package payload.
+[100.0] INFO: Disarmed. Mission Completed.
