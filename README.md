@@ -137,14 +137,121 @@ python testing/test_suite.py
 
 ---
 
-## 📜 Licence & Citation
-Licensed under the MIT Licence. For academic citations:
+## 📖 Citation
+
+If you use this project for academic research, final-year projects, or technical references, please cite:
+
 ```bibtex
 @thesis{DAD_Drone_2026,
-  author = {DAD Project Group},
-  title = {Direct Aerial Delivery: Autonomous Last-Mile Drone Delivery & Control Ecosystem},
-  school = {Solapur University, Department of Electronics and Telecommunication Engineering},
+  author = {Mallu Diswardhan Reddy},
+  title = {Direct Aerial Delivery (DAD): Autonomous Drone Logistics and Last-Mile Delivery Ecosystem},
+  school = {Department of Electronics and Communication Engineering},
   year = {2026},
-  type = {Final Year B.E. Project Report}
+  type = {Final Year Engineering Project}
 }
 ```
+
+---
+
+## 🗺️ Roadmap
+
+### Phase 1 – Research & Architecture
+* Literature survey on autonomous drone logistics
+* DGCA compliance and NPNT framework study
+* System architecture design
+* Hardware platform selection
+
+### Phase 2 – Simulation & Sensor Fusion
+* Multi-Sensor Fusion State Estimation (EKF/Kalman Filter)
+* LiDAR + Camera obstacle detection
+* Weather-aware flight safety monitoring
+* Battery prediction and Return-to-Launch algorithms
+
+### Phase 3 – Autonomous Flight Intelligence
+* Dynamic route planning and obstacle avoidance
+* Bird, wire, pole, tree, and building avoidance
+* Emergency landing decision engine
+* Weather risk assessment module
+
+### Phase 4 – Telemetry & Cloud Platform
+* PX4 + MAVLink integration
+* FastAPI telemetry backend
+* MQTT and WebSocket communication
+* Fleet monitoring dashboard
+
+### Phase 5 – Hardware Validation
+* Tarot 680 Pro assembly
+* Pixhawk 6C integration
+* Raspberry Pi 5 companion computer deployment
+* GPS, LiDAR, and telemetry calibration
+
+### Phase 6 – Field Trials
+* Ground testing and validation
+* Autonomous waypoint missions
+* Obstacle avoidance validation
+* Emergency response testing
+
+### Phase 7 – Smart City Integration
+* Multi-drone fleet management
+* High-bandwidth 5G telemetry integration
+* Delivery hub optimisation
+* Smart-city aerial logistics deployment
+
+---
+
+## 📚 Research & Innovation
+The research and technical foundations of DAD are documented throughout the repository.
+
+### Research Papers
+* Literature Review – `research/literature_review.md`
+* Sensor Fusion Analysis – `research/sensor_fusion_analysis.md`
+* DGCA Compliance Study – `research/dgca_compliance.md`
+* Risk Assessment Framework – `research/risk_assessment.md`
+
+### Intellectual Property Documentation
+* Invention Disclosure – `patent/invention_disclosure.md`
+* Novelty Analysis – `patent/novelty_analysis.md`
+* Prior Art Review – `patent/prior_art_review.md`
+* Draft Claims – `patent/claim_drafts.md`
+
+---
+
+## 🤝 Contributions
+Contributions from students, researchers, drone engineers, robotics developers, and aviation professionals are welcome.
+
+1. Fork the repository.
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/NewFeature
+   ```
+3. Follow PEP-8 and project coding standards.
+4. Commit changes:
+   ```bash
+   git commit -m "Add NewFeature"
+   ```
+5. Push your branch and create a Pull Request.
+
+---
+
+## 👨💻 Author & Contact
+**Mallu Diswardhan Reddy**  
+Final Year Engineering Student  
+Drone Systems & Autonomous Logistics Research  
+
+GitHub: [https://github.com/438malludiswardhanreddy-sketch](https://github.com/438malludiswardhanreddy-sketch)
+
+---
+
+## ⚖️ Intellectual Property Notice
+This repository contains research concepts, autonomous flight algorithms, sensor fusion methodologies, safety frameworks, and drone logistics architectures developed as part of the Direct Aerial Delivery (DAD) research initiative.
+
+The source code is distributed under the MIT Licence. Certain concepts, system architectures, autonomous safety mechanisms, and logistics optimisation methodologies may be subject to future intellectual property protection and patent filings.
+
+---
+
+## 📄 Licence
+This project is licensed under the MIT Licence. See the [LICENSE](LICENSE) file for details.
+
+---
+
+### 🚁 Building the Future of Safe, Intelligent, and Sustainable Aerial Logistics
